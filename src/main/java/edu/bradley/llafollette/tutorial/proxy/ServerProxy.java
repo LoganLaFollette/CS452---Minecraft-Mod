@@ -13,4 +13,5 @@ public class ServerProxy implements CommonProxy {
 	public void registerItemRenderer(Item itemBase, int i, String name) {
 		
 	}
+	
 }

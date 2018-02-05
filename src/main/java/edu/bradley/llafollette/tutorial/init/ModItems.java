@@ -38,4 +38,5 @@ public class ModItems {
 	public static void registerRender(ItemBase item) {
 		item.registerItemModel();
 	}
+	
 }

@@ -7,4 +7,5 @@ public interface CommonProxy {
 	public void init();
 
 	void registerItemRenderer(Item itemBase, int i, String name);
+	
 }

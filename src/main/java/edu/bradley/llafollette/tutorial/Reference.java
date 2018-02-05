@@ -9,5 +9,4 @@ public class Reference
 	
 	public static final String CLIENT_PROXY_CLASS = "edu.bradley.llafollette.tutorial.proxy.ClientProxy";
 	public static final String SERVER_PROXY_CLASS = "edu.bradley.llafollette.tutorial.proxy.ServerProxy";
-	
 }
