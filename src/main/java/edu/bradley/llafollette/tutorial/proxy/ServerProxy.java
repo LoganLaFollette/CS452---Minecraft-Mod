@@ -13,5 +13,11 @@ public class ServerProxy implements IProxy {
 	public void registerItemRenderer(Item itemBase, int meta, String id) {
 		
 	}
+
+	@Override
+	public void registerKeyBindings() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

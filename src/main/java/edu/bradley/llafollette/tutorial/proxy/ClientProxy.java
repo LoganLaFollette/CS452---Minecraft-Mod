@@ -1,6 +1,7 @@
 package edu.bradley.llafollette.tutorial.proxy;
 
 import edu.bradley.llafollette.tutorial.Reference;
+import edu.bradley.llafollette.tutorial.init.KeyBindings;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -20,6 +21,11 @@ public class ClientProxy implements IProxy {
 		
 		ModelLoader.setCustomModelResourceLocation(item, metadata, location);
 		
+	}
+	
+	@Override
+	public void registerKeyBindings() {
+		KeyBindings.init();
 	}
 
 	

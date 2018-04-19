@@ -12,10 +12,10 @@ public class CapabilityHandler {
 
 	public static final ResourceLocation BITCOIN_CAP = new ResourceLocation(Reference.MOD_ID, "bitcoin");
 	
-	@SubscribeEvent
-	public void attachCapability(AttachCapabilitiesEvent<Entity> event) {
-		
-		if (!(event.getEntity() instanceof EntityPlayer)) return;
-		event.addCapability(BITCOIN_CAP, new BitcoinProvider());
-	}
+//	@SubscribeEvent
+//	public void attachCapability(AttachCapabilitiesEvent<Entity> event) {
+//		
+//		if (!(event.getEntity() instanceof EntityPlayer)) return;
+//		event.addCapability(BITCOIN_CAP, new BitcoinProvider());
+//	}
 }

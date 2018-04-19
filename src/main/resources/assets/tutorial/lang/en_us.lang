@@ -1,2 +1,7 @@
 item.cheese.name=Cheese
 item.bitcoin.name=Bitcoin
+tile.cheese_block.name=Cheese
+tile.jar_block.name=Jar
+tile.chair_block.name=Chair
+key.categories.tutorial=Custom
+key.tutorial.event=Hit Block

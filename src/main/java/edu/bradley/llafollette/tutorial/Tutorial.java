@@ -5,6 +5,7 @@ import edu.bradley.llafollette.tutorial.Reference;
 import edu.bradley.llafollette.tutorial.capabilities.BitcoinStorage;
 import edu.bradley.llafollette.tutorial.capabilities.BitcoinWallet;
 import edu.bradley.llafollette.tutorial.capabilities.IBitcoin;
+import edu.bradley.llafollette.tutorial.init.MessageManager;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -29,12 +30,15 @@ public class Tutorial
 	{
 		CapabilityManager.INSTANCE.register(IBitcoin.class, new BitcoinStorage(), BitcoinWallet.class);
 		System.out.println("preInit");
+		
+		MessageManager.registerMessages("tutorial_channel");
 	}
 	
 	@EventHandler
 	public void Init(FMLInitializationEvent event)
 	{
 		System.out.println("init");
+		proxy.registerKeyBindings();
 	}
 	
 	@EventHandler

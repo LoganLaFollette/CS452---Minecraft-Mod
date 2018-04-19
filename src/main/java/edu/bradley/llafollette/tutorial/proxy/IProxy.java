@@ -7,5 +7,6 @@ public interface IProxy {
 	public void init();
 
 	void registerItemRenderer(Item itemBase, int meta, String name);
+	public void registerKeyBindings();
 	
 }
