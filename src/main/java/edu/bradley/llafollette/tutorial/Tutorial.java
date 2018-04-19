@@ -1,7 +1,11 @@
 package edu.bradley.llafollette.tutorial;
 
-import edu.bradley.llafollette.tutorial.proxy.CommonProxy;
+import edu.bradley.llafollette.tutorial.proxy.IProxy;
 import edu.bradley.llafollette.tutorial.Reference;
+import edu.bradley.llafollette.tutorial.capabilities.BitcoinStorage;
+import edu.bradley.llafollette.tutorial.capabilities.BitcoinWallet;
+import edu.bradley.llafollette.tutorial.capabilities.IBitcoin;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -18,11 +22,12 @@ public class Tutorial
 	public static Tutorial instance;
 	
 	@SidedProxy(clientSide=Reference.CLIENT_PROXY_CLASS, serverSide=Reference.SERVER_PROXY_CLASS)
-	public static CommonProxy proxy;
+	public static IProxy proxy;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		CapabilityManager.INSTANCE.register(IBitcoin.class, new BitcoinStorage(), BitcoinWallet.class);
 		System.out.println("preInit");
 	}
 	

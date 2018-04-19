@@ -2,7 +2,7 @@ package edu.bradley.llafollette.tutorial.proxy;
 
 import net.minecraft.item.Item;
 
-public class ServerProxy implements CommonProxy {
+public class ServerProxy implements IProxy {
 	
 	@Override 
 	public void init() {
@@ -10,7 +10,7 @@ public class ServerProxy implements CommonProxy {
 	}
 	
 	@Override
-	public void registerItemRenderer(Item itemBase, int i, String name) {
+	public void registerItemRenderer(Item itemBase, int meta, String id) {
 		
 	}
 	
