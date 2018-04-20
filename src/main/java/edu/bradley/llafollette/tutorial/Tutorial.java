@@ -1,10 +1,12 @@
 package edu.bradley.llafollette.tutorial;
 
 import edu.bradley.llafollette.tutorial.proxy.IProxy;
+import edu.bradley.llafollette.tutorial.tileentities.TileEntityATM;
 import edu.bradley.llafollette.tutorial.Reference;
 import edu.bradley.llafollette.tutorial.capabilities.BitcoinStorage;
 import edu.bradley.llafollette.tutorial.capabilities.BitcoinWallet;
 import edu.bradley.llafollette.tutorial.capabilities.IBitcoin;
+import edu.bradley.llafollette.tutorial.gui.GUIHandler;
 import edu.bradley.llafollette.tutorial.init.MessageManager;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
@@ -14,6 +16,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 
@@ -32,6 +36,8 @@ public class Tutorial
 		System.out.println("preInit");
 		
 		MessageManager.registerMessages("tutorial_channel");
+		
+		GameRegistry.registerTileEntity(TileEntityATM.class, "atm");
 	}
 	
 	@EventHandler
@@ -39,6 +45,7 @@ public class Tutorial
 	{
 		System.out.println("init");
 		proxy.registerKeyBindings();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GUIHandler());
 	}
 	
 	@EventHandler
