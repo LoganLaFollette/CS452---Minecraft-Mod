@@ -22,7 +22,7 @@ public class BlockBase extends Block implements IHasModel {
 		setRegistryName(name); //takes module id
 		
 		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		//ModItems.ITEMS.add(this); //automatically adds itself to array
+		//automatically adds itself to array
 		ModBlocks.BLOCKS.add(this);
 		ItemBlock itemBlock = new ItemBlock(this);
 		itemBlock.setRegistryName(this.getRegistryName());

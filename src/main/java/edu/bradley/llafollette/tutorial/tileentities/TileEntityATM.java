@@ -24,10 +24,9 @@ public class TileEntityATM extends TileEntity implements ITickable, IContainerCa
 	private int timeRemaining = 0;
 	private boolean inUse = false;
 	
-	private static final int MATERIAL_SLOT = 0;
-	private static final int BITCOIN_SLOT = 1;
-	private static final int OUTPUT_SLOT = 1;
-	private static final int MAX_SLOTS = 2;
+	private static final int BITCOIN_SLOT = 0;
+	private static final int OUTPUT_SLOT = 2;
+	private static final int MAX_SLOTS = 3;
 	
 	private ItemStackHandler inventory = new ItemStackHandler(MAX_SLOTS);
 	
@@ -99,7 +98,7 @@ public class TileEntityATM extends TileEntity implements ITickable, IContainerCa
 	public void update() {
 		if (inUse) {
 			timeRemaining--;
-			System.out.println("JT:     tick down crafting timer to " + timeRemaining);
+			System.out.println("ATM:     tick down crafting timer to " + timeRemaining);
 		}
 		
 		if (!this.world.isRemote) {
@@ -108,8 +107,8 @@ public class TileEntityATM extends TileEntity implements ITickable, IContainerCa
 				inUse = true;
 			}
 			
-			if (timeRemaining == 0) && canCombine()) {
-				System.out.println("JT:    time remaining is zero, and container can combine slots");
+			if (timeRemaining == 0 && canCombine()) {
+				System.out.println("ATM:    time remaining is zero, and container can combine slots");
 				produceResult();
 				inUse = false;
 				this.markDirty();
@@ -121,41 +120,38 @@ public class TileEntityATM extends TileEntity implements ITickable, IContainerCa
 	}
 
 	private void produceResult() {
-		ItemStack result = new ItemStack(ModItems.bitcoin);
+		ItemStack result = new ItemStack(Items.GOLD_INGOT);
 		ItemStack outputStack = inventory.getStackInSlot(OUTPUT_SLOT);
-		ItemStack materialStack = inventory.getStackInSlot(MATERIAL_SLOT);
-		ItemStack bitcoinStack = inventory.getStackInSlot(BITCOIN_SLOT);
+		ItemStack materialStack = inventory.getStackInSlot(BITCOIN_SLOT);
 		
 		materialStack.shrink(1);
-		bitcoinStack.shrink(1);
+//		bitcoinStack.shrink(1);
 		
 		if (outputStack.isEmpty()) {
-			System.out.println("JT:     assigning new stack to slot");
+			System.out.println("ATM:     assigning new stack to slot");
 			inventory.setStackInSlot(OUTPUT_SLOT, result);
 		}
 		else if (outputStack.getItem() == ModItems.bitcoin) {
-			System.out.println("JT:  inserting new item in existing stack");
-			System.out.println("JT:  count currently " + outputStack.getCount());
-			System.out.println("JT   unlocalized name: " + outputStack.getItem().getUnlocalizedName());
+			System.out.println("ATM:  inserting new item in existing stack");
+			System.out.println("ATM:  count currently " + outputStack.getCount());
+			System.out.println("ATM:   unlocalized name: " + outputStack.getItem().getUnlocalizedName());
 			inventory.insertItem(OUTPUT_SLOT, result, false);
 		}
 	}
 
 	private boolean canCombine() {
-		ItemStack materialItems = inventory.getStackInSlot(MATERIAL_SLOT);
-		ItemStack bitcoinItems = inventory.getStackInSlot(BITCOIN_SLOT);
+		ItemStack materialItems = inventory.getStackInSlot(BITCOIN_SLOT);
 		
-		if (materialItems.isEmpty() || bitcoinItems.isEmpty()) {
+		if (materialItems.isEmpty()) {
 			return false;
 		}
 		
 		Item material = materialItems.getItem();
-		Item bitcoin = bitcoinItems.getItem();
 		
-		if ((material != Items.IRON_INGOT) && (material != Items.GOLD_INGOT)) {
+		if ((material != ModItems.bitcoin)) {
 			return false;
 		}
 		
 		return true;
 	}
-}
+} 

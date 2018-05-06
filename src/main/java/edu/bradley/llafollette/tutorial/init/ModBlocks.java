@@ -5,6 +5,7 @@ import java.util.List;
 
 import edu.bradley.llafollette.tutorial.Reference;
 import edu.bradley.llafollette.tutorial.blocks.BlockBase;
+import edu.bradley.llafollette.tutorial.blocks.BlockNonOpaque;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.common.Mod;
@@ -16,6 +17,6 @@ public class ModBlocks {
 	
 	public static Block CHEESE_BLOCK = new BlockBase("cheese_block", Material.IRON);
 	public static Block ANTMINER_BLOCK = new BlockBase("antminer_block", Material.CIRCUITS);
-	
+	public static BlockNonOpaque ATM_BLOCK = new BlockNonOpaque("atm_block", Material.IRON); 
 	
 }

@@ -13,7 +13,7 @@ import net.minecraftforge.items.IItemHandler;
 
 public class GUIAtm extends GuiContainer {
 	
-	private static final ResourceLocation JT_GUI_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/jewelry_table_gui.png");
+	private static final ResourceLocation ATM_GUI_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/atm_gui.png");
 	private static final int TEXT_COLOR = 0x404040;
 	
 	private final IItemHandler playerInventory;
@@ -32,7 +32,7 @@ public class GUIAtm extends GuiContainer {
 
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		
-		this.mc.getTextureManager().bindTexture(JT_GUI_TEXTURE);
+		this.mc.getTextureManager().bindTexture(ATM_GUI_TEXTURE);
 		
 		final int x = (this.width - this.xSize) / 2;
 		final int y = (this.height - this.ySize) / 2;
@@ -43,7 +43,7 @@ public class GUIAtm extends GuiContainer {
 	
 	@Override 
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		TextComponentTranslation localized = new TextComponentTranslation("tile.jewelry_table.name", new Object[0]);
+		TextComponentTranslation localized = new TextComponentTranslation("tile.atm.name", new Object[0]);
 		
 		this.fontRenderer.drawString(localized.getFormattedText(), 70, 9, Color.BLACK.value());
 	}

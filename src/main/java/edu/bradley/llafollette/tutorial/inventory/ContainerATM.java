@@ -1,5 +1,6 @@
 package edu.bradley.llafollette.tutorial.inventory;
 
+import edu.bradley.llafollette.tutorial.init.ModItems;
 import edu.bradley.llafollette.tutorial.tileentities.TileEntityATM;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -20,15 +21,13 @@ public class ContainerATM extends Container {
 	private final IItemHandler atmInventory;
 	
 	private static final int PLAYER_ROWS = 3;
-	private static final int BITCOIN_SLOT = 0;
-	private static final int MATERIAL_SLOT = 1;
-	private static final int OUTPUT_SLOT = 2;
-	private static final int TOTAL_TABLE_SLOTS = 3;
+	private static final int MATERIAL_SLOT = 1;  // bitcoin item slots for conversion to gold
+	private static final int OUTPUT_SLOT = 1;    // gold ingot output
+	private static final int TOTAL_TABLE_SLOTS = 2;
 	
 	private static final int SLOTS_PER_ROW = 9;
 	private static final int CELL_SIZE = 18;
 	private static final int PLAYER_SLOT_BASE = 84;
-	private static final int HOTBAR_BASE = 142;
 	private static final int LEFT_BORDER_WIDTH = 8;
 	
 	private static final int TOTAL_PLAYER_SLOTS = 4 * SLOTS_PER_ROW;
@@ -99,18 +98,12 @@ public class ContainerATM extends Container {
 					return ItemStack.EMPTY;
 				}
 			}
-			else if (index != BITCOIN_SLOT && index != MATERIAL_SLOT) {
+			else if (index != MATERIAL_SLOT) {
 				
 				Item toMove = stack.getItem();
-				if (toMove == Items.IRON_INGOT || toMove == Items.GOLD_INGOT) {
+				if (toMove == ModItems.bitcoin) {
 					
 					if (!this.mergeItemStack(stack, MATERIAL_SLOT, MATERIAL_SLOT+1, false)) {
-						return ItemStack.EMPTY;
-					}
-				}
-				
-				if (toMove == Items.DIAMOND || toMove == Items.EMERALD) {
-					if (!this.mergeItemStack(stack, BITCOIN_SLOT, BITCOIN_SLOT+1, false)) {
 						return ItemStack.EMPTY;
 					}
 				}

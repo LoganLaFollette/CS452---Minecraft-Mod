@@ -21,7 +21,7 @@ public class BlockAtm extends BlockTileEntity<TileEntityATM> {
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
 
-		System.out.println("JT:     create new tile entity");
+		System.out.println("ATM:     create new tile entity");
 		return new TileEntityATM();
 	}
 
@@ -29,7 +29,7 @@ public class BlockAtm extends BlockTileEntity<TileEntityATM> {
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (!worldIn.isRemote) {
-			System.out.println("JT:     block activated on server side, instructing player to open gui");
+			System.out.println("ATM:     block activated on server side, instructing player to open gui");
 			
 			playerIn.openGui(Reference.MOD_ID, GuiIDs.ATM, worldIn, pos.getX(), pos.getY(), pos.getZ());
 			

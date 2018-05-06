@@ -13,7 +13,7 @@ public class GUIHandler implements IGuiHandler {
 
 	
 	public GUIHandler() {
-		System.out.println("JT:    registering GUI Handler");
+		System.out.println("ATM:    registering GUI Handler");
 	}
 	
 	@Override
@@ -25,7 +25,7 @@ public class GUIHandler implements IGuiHandler {
 		switch (ID) {
 		case GuiIDs.ATM: 
 			if (tileEntity != null) {
-				System.out.println("JT:    server-side container create");
+				System.out.println("ATM:    server-side container create");
 				return ((TileEntityATM) tileEntity).createContainer(player);
 			}
 			break;
@@ -42,7 +42,7 @@ public class GUIHandler implements IGuiHandler {
 		case GuiIDs.ATM: 
 			if (tileEntity != null) {
 				TileEntityATM atm = (TileEntityATM) tileEntity;
-				System.out.println("JT:    client-side container create");
+				System.out.println("ATM:    client-side container create");
 				return new GUIAtm(atm.createContainer(player));
 			}
 			break;

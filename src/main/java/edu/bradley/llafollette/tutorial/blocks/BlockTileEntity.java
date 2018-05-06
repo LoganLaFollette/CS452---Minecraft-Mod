@@ -25,7 +25,7 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends BlockNonOpa
 	@SuppressWarnings("unchecked")
 	@Nullable
 	protected TE getTileEntity(final IBlockAccess world, final BlockPos pos) {
-		System.out.println("JT:     get tile entity at location " + pos);
+		System.out.println("ATM:     get tile entity at location " + pos);
 		
 		return (TE) world.getTileEntity(pos);
 	}
